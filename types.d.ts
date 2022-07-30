@@ -11,27 +11,7 @@ export interface Video {
   postedBy: {
     _id: string;
     userName: string;
-    image: {
-      asset: {
-        _ref: string;
-        _type: string;
-      };
-      crop: {
-        bottom: number;
-        left: number;
-        right: number;
-        top: number;
-        _type: string;
-      };
-      hotspot: {
-        height: number;
-        width: number;
-        x: number;
-        y: number;
-        _type: string;
-      };
-      _type: string;
-    };
+    image: string;
   };
   likes: {
     _key: string;
@@ -43,29 +23,15 @@ export interface Video {
     _key: string;
     postedBy: {
       _id: string;
-      userName: string;
-      image: {
-        asset: {
-          _ref: string;
-          _type: string;
-        };
-        crop: {
-          bottom: number;
-          left: number;
-          right: number;
-          top: number;
-          _type: string;
-        };
-        hotspot: {
-          height: number;
-          width: number;
-          x: number;
-          y: number;
-          _type: string;
-        };
-        _type: string;
-      };
+      _ref: string;
     };
   }[];
   userID: string;
+}
+
+export interface IUser {
+  _id: string;
+  _type: string;
+  userName: string;
+  image: string;
 }

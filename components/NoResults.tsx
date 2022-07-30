@@ -1,9 +1,22 @@
 import React from 'react';
+import { MdOutlineVideocamOff } from 'react-icons/md';
+import { BiCommentX } from 'react-icons/bi';
 
-const NoResults = () => {
+interface IProps {
+  text: string;
+}
+
+const NoResults = ({ text }: IProps) => {
   return (
-    <div>
-      No results
+    <div className="flex flex-col justify-center items-center h-full w-full">
+      <p className="text-8xl">
+        {text === 'Еще ни одного комментария'
+        ? <BiCommentX/>
+        : <MdOutlineVideocamOff />}
+      </p>
+      <p className="text-2xl text-center">
+        { text }
+      </p>
     </div>
   );
 };

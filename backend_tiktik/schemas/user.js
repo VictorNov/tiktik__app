@@ -11,10 +11,7 @@ export default {
     {
       name: 'image',
       title: 'Аватар',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      type: 'string',
     },
   ],
 }
