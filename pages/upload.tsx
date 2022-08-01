@@ -28,6 +28,7 @@ const Upload = () => {
     const fileTypes = ['video/mp4', 'video/webm', 'video/ogg'];
 
     setIsLoading(true);
+    setWrongFileType(false);
 
     if (fileTypes.includes(selectedFile.type)) {
       await client.assets.upload('file', selectedFile, {
