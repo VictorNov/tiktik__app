@@ -66,16 +66,18 @@ const Upload = () => {
         topic: category,
       }
 
-      await axios.post(`${BASE_URL}/api/post`, document);
-
-      router.push('/');
+      await axios.post(`${BASE_URL}/api/post`, document)
+        .finally(() => {
+          setSavingPost(false);
+          router.push('/');
+        });
     }
   }
 
   return (
     <div className="flex w-full absolute left-0 top-[60px] mb-10 pt-10 pb-10 lg:pt-20 bg-[#F8F8F8]
     justify-center">
-      <div className="bg-white rounded-lg xl:h-[80vh] w-[60%] flex gap-6 flex-wrap justify-center xl:justify-between
+      <div className="bg-white rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-center xl:justify-between
       items-center p-14 pt-6">
         <div>
           <div>
@@ -87,7 +89,7 @@ const Upload = () => {
             </p>
           </div>
           <div className="border-dashed rounded-xl border-4 border-gray-200 flex flex-col
-          justify-center items-center outline-none mt-10 w-[260px] h-[460px] p-10 cursor-pointer
+          justify-center items-center outline-none mt-10 w-[260px] h-[460px] p-2 cursor-pointer
           hover:border-red-300 hover:bg-gray-100">
             {isLoading ? (
               <p>Загружается...</p>
@@ -99,7 +101,7 @@ const Upload = () => {
                       src={videoAsset.url}
                       loop
                       controls
-                      className="rounded-xl h-[450px] mt-16 bg-black"
+                      className="rounded-xl h-full w-full bg-black"
                     >
 
                     </video>
@@ -109,9 +111,6 @@ const Upload = () => {
                     <div className="flex flex-col items-center justify-center h-full">
                       <div className="flex flex-col items-center justify-center">
                         <FaCloudUploadAlt className="font-bold text-gray-300 text-6xl" />
-                        <p className="text-xl font-semibold text-center">
-                          Загрузка Видео
-                        </p>
                       </div>
                       <p className="text-gray-400 text-center mt-10 text-sm leading-5">
                         MP4, WebM или ogg <br />
@@ -184,7 +183,7 @@ const Upload = () => {
               type="button"
               className="bg-[#f51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
             >
-              Загрузить
+              {savingPost ? 'Сохраняю' : 'Загрузить'}
             </button>
           </div>
         </div>
